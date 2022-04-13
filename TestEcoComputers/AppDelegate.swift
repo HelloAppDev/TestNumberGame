@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  TestEcoComputers
 //
-//  Created by Мария Изюменко on 12.04.2022.
+//  Created by Мария Изюменко on 13.04.2022.
 //
 
 import UIKit

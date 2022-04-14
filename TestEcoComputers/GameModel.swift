@@ -7,25 +7,24 @@
 
 import Foundation
 
-
-struct GameModel {
+class GameModel {
     
-    var unknownNumber: Int
-    var guesses: Int
-    var lastNumber: Int
-    
-}
-
-func more() {
+    var unknownNumber: Int = 0
+    var guesses: Int = 0
+    var lastNumber: Int = 0
     
 }
 
-func less() {
+extension GameModel {
+    
+    func addUserNumber(unknownNumber: Int) {
+        
+        
+        
+    }
     
 }
 
-func currentNumber() {
-    
-}
+
 
 

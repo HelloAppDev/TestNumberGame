@@ -29,7 +29,7 @@ class StartViewController: UIViewController {
         return startLabel
     }()
     
-    // Доделать описание и внедрить лвл
+    // Доделать описание
     let descriptionLabel: UILabel = {
         let description = UILabel()
         

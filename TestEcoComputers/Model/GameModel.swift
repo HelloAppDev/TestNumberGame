@@ -50,8 +50,6 @@ class GameModel {
         }
         return nil
     }
-    
-    
 }
 
 

@@ -1,6 +1,6 @@
 import UIKit
 
-class ComputerAttempt: UIViewController {
+class ComputerAttemptViewController: UIViewController {
     
     let gameModel = GameModel()
     
@@ -31,36 +31,28 @@ class ComputerAttempt: UIViewController {
     lazy var tryLabel: UILabel = {
         let label = UILabel()
         label.text = "Try № \(tryCount)"
-        label.font = UIFont(name: "Helvetica", size: 23.0)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
+        labelSettings()
         return label
     }()
     
-    let compGuessingLabel: UILabel = {
+    lazy var compGuessingLabel: UILabel = {
         let label = UILabel()
         label.text = "Computer is guessing"
-        label.font = UIFont(name: "Helvetica", size: 23.0)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
+        labelSettings()
         return label
     }()
     
     lazy var yourNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "Your number is - 50? "
-        label.font = UIFont(name: "Helvetica", size: 23.0)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
+        labelSettings()
         return label
     }()
     
-    let myNumberLabel: UILabel = {
+    lazy var myNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "My number is..."
-        label.font = UIFont(name: "Helvetica", size: 23.0)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
+        labelSettings()
         return label
     }()
     
@@ -69,8 +61,8 @@ class ComputerAttempt: UIViewController {
         setupConstraints()
         
         moreButton.addTarget(self, action: #selector(moreTapped), for: .touchUpInside)
-        equalButton.addTarget(self, action: #selector(equalButton), for: .touchUpInside)
-        lessButton.addTarget(self, action: #selector(lessButton), for: .touchUpInside)
+        equalButton.addTarget(self, action: #selector(equalTapped), for: .touchUpInside)
+        lessButton.addTarget(self, action: #selector(lessTapped), for: .touchUpInside)
         
     }
     
@@ -91,6 +83,13 @@ class ComputerAttempt: UIViewController {
         gameModel.middleNumber()
         print(hiddenNumber)
         yourNumberLabel.text = gameModel.lastNumber
+    }
+    
+    private func labelSettings() {
+        let label = UILabel()
+        label.font = UIFont(name: "Helvetica", size: 23.0)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
     }
     
    private func buttonSettings() {

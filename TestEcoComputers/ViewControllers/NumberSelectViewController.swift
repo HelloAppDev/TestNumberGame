@@ -49,7 +49,7 @@ class NumberSelectViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "passNumber",
-           let dvc = segue.destination as? ComputerAttempt {
+           let dvc = segue.destination as? ComputerAttemptViewController {
             dvc.hiddenNumber = Int(textField.text ?? "100") ?? 100
         }
     }

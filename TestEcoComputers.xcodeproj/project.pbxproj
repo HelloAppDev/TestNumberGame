@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1523F762280697D60085089C /* NumberSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F761280697D60085089C /* NumberSelectViewController.swift */; };
-		1523F7642806A7750085089C /* ComputerAttempt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F7632806A7750085089C /* ComputerAttempt.swift */; };
+		1523F7642806A7750085089C /* ComputerAttemptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F7632806A7750085089C /* ComputerAttemptViewController.swift */; };
 		1523F7662806D9520085089C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F7652806D9520085089C /* GameModel.swift */; };
+		1523F76D280982640085089C /* HumanAttemptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F76C280982640085089C /* HumanAttemptViewController.swift */; };
+		1523F76F280982850085089C /* TryCountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F76E280982850085089C /* TryCountsViewController.swift */; };
 		15BB4E152805D64C002DE718 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB4E142805D64C002DE718 /* AppDelegate.swift */; };
 		15BB4E172805D64C002DE718 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB4E162805D64C002DE718 /* SceneDelegate.swift */; };
 		15BB4E192805D64C002DE718 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB4E182805D64C002DE718 /* StartViewController.swift */; };
@@ -20,8 +22,10 @@
 
 /* Begin PBXFileReference section */
 		1523F761280697D60085089C /* NumberSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberSelectViewController.swift; sourceTree = "<group>"; };
-		1523F7632806A7750085089C /* ComputerAttempt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerAttempt.swift; sourceTree = "<group>"; };
+		1523F7632806A7750085089C /* ComputerAttemptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerAttemptViewController.swift; sourceTree = "<group>"; };
 		1523F7652806D9520085089C /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		1523F76C280982640085089C /* HumanAttemptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanAttemptViewController.swift; sourceTree = "<group>"; };
+		1523F76E280982850085089C /* TryCountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryCountsViewController.swift; sourceTree = "<group>"; };
 		15BB4E112805D64C002DE718 /* TestEcoComputers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestEcoComputers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BB4E142805D64C002DE718 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15BB4E162805D64C002DE718 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1523F769280981B50085089C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1523F7652806D9520085089C /* GameModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1523F76A280981C80085089C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1523F7632806A7750085089C /* ComputerAttemptViewController.swift */,
+				1523F761280697D60085089C /* NumberSelectViewController.swift */,
+				15BB4E182805D64C002DE718 /* StartViewController.swift */,
+				1523F76C280982640085089C /* HumanAttemptViewController.swift */,
+				1523F76E280982850085089C /* TryCountsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1523F76B2809822C0085089C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				15BB4E142805D64C002DE718 /* AppDelegate.swift */,
+				15BB4E162805D64C002DE718 /* SceneDelegate.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		15BB4E082805D64C002DE718 = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +95,9 @@
 		15BB4E132805D64C002DE718 /* TestEcoComputers */ = {
 			isa = PBXGroup;
 			children = (
-				15BB4E142805D64C002DE718 /* AppDelegate.swift */,
-				15BB4E162805D64C002DE718 /* SceneDelegate.swift */,
-				15BB4E182805D64C002DE718 /* StartViewController.swift */,
-				1523F7632806A7750085089C /* ComputerAttempt.swift */,
-				1523F761280697D60085089C /* NumberSelectViewController.swift */,
-				1523F7652806D9520085089C /* GameModel.swift */,
+				1523F76A280981C80085089C /* ViewControllers */,
+				1523F769280981B50085089C /* Model */,
+				1523F76B2809822C0085089C /* Extensions */,
 				15BB4E1A2805D64C002DE718 /* Main.storyboard */,
 				15BB4E1D2805D64E002DE718 /* Assets.xcassets */,
 				15BB4E1F2805D64E002DE718 /* LaunchScreen.storyboard */,
@@ -149,9 +179,11 @@
 			files = (
 				15BB4E192805D64C002DE718 /* StartViewController.swift in Sources */,
 				15BB4E152805D64C002DE718 /* AppDelegate.swift in Sources */,
+				1523F76F280982850085089C /* TryCountsViewController.swift in Sources */,
 				1523F762280697D60085089C /* NumberSelectViewController.swift in Sources */,
 				15BB4E172805D64C002DE718 /* SceneDelegate.swift in Sources */,
-				1523F7642806A7750085089C /* ComputerAttempt.swift in Sources */,
+				1523F76D280982640085089C /* HumanAttemptViewController.swift in Sources */,
+				1523F7642806A7750085089C /* ComputerAttemptViewController.swift in Sources */,
 				1523F7662806D9520085089C /* GameModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

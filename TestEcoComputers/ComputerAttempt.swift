@@ -1,62 +1,36 @@
-//
-//  ComputerAttempt.swift
-//  TestEcoComputers
-//
-//  Created by Мария Изюменко on 13.04.2022.
-//
-
 import UIKit
 
 class ComputerAttempt: UIViewController {
     
     let gameModel = GameModel()
     
-    lazy var hiddenNumber = gameModel.unknownNumber
-    var tryCount1 = 1
+    lazy var hiddenNumber = gameModel.hiddenNumber
+    var tryCount = 1
     var compGuessing = 1
     
-    let moreButton: UIButton = {
+    lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
         button.setTitle(">", for: .normal)
-        button.layer.borderWidth = 0.7
-        button.layer.cornerRadius = 15
-        button.titleLabel?.font = UIFont(name: "Helvetica", size: 23.0)
-        button.setTitleColor(.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(more), for: .touchUpInside)
+        buttonSettings()
         return button
     }()
     
-    let equalButton: UIButton = {
+    lazy var equalButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
         button.setTitle("=", for: .normal)
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 0.7
-        button.titleLabel?.font = UIFont(name: "Helvetica", size: 23.0)
-        button.setTitleColor(.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(currentNumber), for: .touchUpInside)
+        buttonSettings()
         return button
     }()
     
-    let lessButton: UIButton = {
+    lazy var lessButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("<", for: .normal)
-        button.layer.cornerRadius = 15
-        button.layer.borderWidth = 0.7
-        button.titleLabel?.font = UIFont(name: "Helvetica", size: 23.0)
-        button.setTitleColor(.black, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(less), for: .touchUpInside)
+        buttonSettings()
         return button
     }()
     
     lazy var tryLabel: UILabel = {
         let label = UILabel()
-        label.text = "Try № \(tryCount1)"
+        label.text = "Try № \(tryCount)"
         label.font = UIFont(name: "Helvetica", size: 23.0)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -72,9 +46,9 @@ class ComputerAttempt: UIViewController {
         return label
     }()
     
-    let yourNumberLabel: UILabel = {
+    lazy var yourNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "Your number is -    ? "
+        label.text = "Your number is - 50? "
         label.font = UIFont(name: "Helvetica", size: 23.0)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -90,52 +64,44 @@ class ComputerAttempt: UIViewController {
         return label
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
         
-    }
-    
-    var min = 1
-    var max = 100
-    
-    var searchNum = Int()
-    
-    func binarySearch(searchNum: Int) -> Int? {
-        
-        while min <= max {
-            
-            let mid = (min + max) / 2
-            
-            if searchNum < mid {
-                // Search in left side of array
-                max = mid - 1
-            } else if searchNum > mid {
-                // Search in right side of array
-                min = mid + 1
-            } else {
-                return mid
-            }
-            
-        }
-        return nil
-    }
-    
-    
-    
-    @objc func more(searchNum: Int) {
+        moreButton.addTarget(self, action: #selector(moreTapped), for: .touchUpInside)
+        equalButton.addTarget(self, action: #selector(equalButton), for: .touchUpInside)
+        lessButton.addTarget(self, action: #selector(lessButton), for: .touchUpInside)
         
     }
     
-    @objc func less() {
+    @objc private func moreTapped() {
+        gameModel.more()
+        print(hiddenNumber)
+        yourNumberLabel.text = gameModel.lastNumber
         
     }
     
-    @objc func currentNumber() {
-        
+    @objc private func lessTapped() {
+        gameModel.less()
+        print(hiddenNumber)
+        yourNumberLabel.text = gameModel.lastNumber
     }
     
+    @objc private func equalTapped() {
+        gameModel.middleNumber()
+        print(hiddenNumber)
+        yourNumberLabel.text = gameModel.lastNumber
+    }
+    
+   private func buttonSettings() {
+        let button = UIButton()
+        button.backgroundColor = .white
+        button.layer.borderWidth = 0.7
+        button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 23.0)
+        button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+    }
     
     private func setupConstraints() {
         view.addSubview(moreButton)
@@ -173,7 +139,7 @@ class ComputerAttempt: UIViewController {
         
         yourNumberLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 170).isActive = true
         yourNumberLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        yourNumberLabel.widthAnchor.constraint(equalToConstant: 210).isActive = true
+        yourNumberLabel.widthAnchor.constraint(equalToConstant: 320).isActive = true
         yourNumberLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
         myNumberLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180).isActive = true

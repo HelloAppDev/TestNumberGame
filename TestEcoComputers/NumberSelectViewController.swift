@@ -1,10 +1,3 @@
-//
-//  NumberSelectViewController.swift
-//  TestEcoComputers
-//
-//  Created by Мария Изюменко on 13.04.2022.
-//
-
 import UIKit
 
 class NumberSelectViewController: UIViewController {
@@ -36,7 +29,7 @@ class NumberSelectViewController: UIViewController {
         enterNumberButton.isEnabled = false
         enterNumberButton.backgroundColor = .systemBlue
         textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-
+        
     }
     
     func showAlert(message: String) {
@@ -56,8 +49,8 @@ class NumberSelectViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "passNumber",
-        let dvc = segue.destination as? ComputerAttempt {
-        dvc.hiddenNumber = Int(textField.text ?? "100")
+           let dvc = segue.destination as? ComputerAttempt {
+            dvc.hiddenNumber = Int(textField.text ?? "100") ?? 100
         }
     }
     
@@ -87,7 +80,7 @@ extension NumberSelectViewController: UITextFieldDelegate {
         if textField.text?.isEmpty == false {
             enterNumberButton.isEnabled = true
             enterNumberButton.backgroundColor = .blue
-
+            
         } else {
             enterNumberButton.isEnabled = false
             enterNumberButton.backgroundColor = .systemBlue

@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  TestEcoComputers
-//
-//  Created by Мария Изюменко on 13.04.2022.
-//
-
 import UIKit
 
 class StartViewController: UIViewController {
@@ -60,7 +53,6 @@ class StartViewController: UIViewController {
         label.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
     }
-    
     
 }
 

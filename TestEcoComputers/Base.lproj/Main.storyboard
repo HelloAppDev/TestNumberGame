@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1yj-dV-2La">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,7 +13,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="StartViewController" customModule="TestEcoComputers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -31,7 +32,7 @@
             <objects>
                 <viewController storyboardIdentifier="numberSelect" id="zMl-vc-Rgx" customClass="NumberSelectViewController" customModule="TestEcoComputers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xpU-jW-ice">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="DYX-mj-VoL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -50,42 +51,50 @@
             <objects>
                 <viewController storyboardIdentifier="computerAttempt" id="znu-7L-U7I" customClass="ComputerAttemptViewController" customModule="TestEcoComputers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v5m-zC-P9e">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Mc5-5c-RKW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="VUK-FG-eFx"/>
+                    <connections>
+                        <segue destination="kxl-ON-UMZ" kind="show" identifier="humanGuessing" id="ASo-lj-sYK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSQ-Us-ZVO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2274" y="82"/>
         </scene>
-        <!--View Controller-->
+        <!--Human Attempt View Controller-->
         <scene sceneID="oXZ-Jz-aSa">
             <objects>
-                <viewController id="kxl-ON-UMZ" sceneMemberID="viewController">
+                <viewController id="kxl-ON-UMZ" customClass="HumanAttemptViewController" customModule="TestEcoComputers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4AC-Ph-aLh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="P7N-pB-3Gd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="BgY-kH-pG8"/>
+                    <connections>
+                        <segue destination="BVQ-Z0-fh1" kind="show" identifier="triesSegue" id="HPQ-p7-g89"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vb-Gg-1qf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3014" y="82"/>
         </scene>
-        <!--View Controller-->
+        <!--Try Counts View Controller-->
         <scene sceneID="vQQ-cK-pNm">
             <objects>
-                <viewController id="BVQ-Z0-fh1" sceneMemberID="viewController">
+                <viewController id="BVQ-Z0-fh1" customClass="TryCountsViewController" customModule="TestEcoComputers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wVb-JG-9tU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="M73-au-Vjx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fi0-av-EAe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wfs-I6-ooF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

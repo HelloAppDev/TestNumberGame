@@ -1,35 +1,39 @@
 import Foundation
 
-class GameModel {
+struct GameModel {
     
-    var hiddenNumber: Int = 0
-    var guesses: Int = 0
-    var lastNumber = String()
+    var secretNumber: Int
+    var guesses: Int
+    var lastNumber = ""
     
     var min = 1
     var max = 100
     
-    func more() -> Int? {
+    mutating func more() -> Int? {
         
         while min != max {
             var mid = (min + max) / 2
             
-            if hiddenNumber > mid {
+            if secretNumber > mid {
+                self.guesses += 1
                 min = mid + 1
                 mid = (min + max) / 2
                 lastNumber = "Your number is \(mid)?"
+            } else {
+                print("error")
             }
             return mid
         }
         return nil
     }
     
-    func less() -> Int? {
+    mutating func less() -> Int? {
         
         while min != max {
             var mid = (min + max) / 2
             
-            if hiddenNumber < mid {
+            if secretNumber < mid {
+                self.guesses += 1
                 max = mid - 1
                 mid = (min + max) / 2
                 lastNumber = "Your number is \(mid)?"
@@ -38,21 +42,5 @@ class GameModel {
         }
         return nil
     }
-    func middleNumber() -> Int? {
-        
-        while min != max {
-            let mid = ((min + max) / 2) - (min/2)
-            
-            if hiddenNumber == Int(mid) {
-                lastNumber = "Your number is \(mid)!"
-            }
-            return mid
-        }
-        return nil
-    }
 }
-
-
-
-
 

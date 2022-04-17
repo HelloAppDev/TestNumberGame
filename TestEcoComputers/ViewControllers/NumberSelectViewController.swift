@@ -1,7 +1,7 @@
 import UIKit
 
 class NumberSelectViewController: UIViewController {
-    
+
     let enterNumberButton: UIButton = {
         let startButton = UIButton()
         startButton.setTitle("Enter The Number", for: .normal)
@@ -32,18 +32,9 @@ class NumberSelectViewController: UIViewController {
         
     }
     
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        alert.addAction(defaultAction)
-        self.present(alert, animated: true)
-    }
-    
     @objc func segueToNextVC() {
         if textField.text?.isEmpty != true {
             performSegue(withIdentifier: "passNumber", sender: AnyObject.self)
-        } else {
-            showAlert(message: "Please fill the text field")
         }
     }
     
@@ -51,6 +42,7 @@ class NumberSelectViewController: UIViewController {
         if segue.identifier == "passNumber",
            let dvc = segue.destination as? ComputerAttemptViewController {
             dvc.hiddenNumber = Int(textField.text ?? "100") ?? 100
+
         }
     }
     
@@ -80,7 +72,6 @@ extension NumberSelectViewController: UITextFieldDelegate {
         if textField.text?.isEmpty == false {
             enterNumberButton.isEnabled = true
             enterNumberButton.backgroundColor = .blue
-            
         } else {
             enterNumberButton.isEnabled = false
             enterNumberButton.backgroundColor = .systemBlue

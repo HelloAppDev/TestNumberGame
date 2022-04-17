@@ -58,9 +58,9 @@
 		1523F76A280981C80085089C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				1523F7632806A7750085089C /* ComputerAttemptViewController.swift */,
-				1523F761280697D60085089C /* NumberSelectViewController.swift */,
 				15BB4E182805D64C002DE718 /* StartViewController.swift */,
+				1523F761280697D60085089C /* NumberSelectViewController.swift */,
+				1523F7632806A7750085089C /* ComputerAttemptViewController.swift */,
 				1523F76C280982640085089C /* HumanAttemptViewController.swift */,
 				1523F76E280982850085089C /* TryCountsViewController.swift */,
 			);

@@ -1,105 +1,122 @@
 import UIKit
 
+protocol TriesDelegate: class {
+    func updateLabel(label text: String)
+        
+}
+
 class ComputerAttemptViewController: UIViewController {
     
-    let gameModel = GameModel()
+    lazy var gameModel = GameModel(secretNumber: hiddenNumber, guesses: compGuessing)
+    let tryVC = TryCountsViewController()
     
-    lazy var hiddenNumber = gameModel.hiddenNumber
-    var tryCount = 1
+    var hiddenNumber = Int()
     var compGuessing = 1
+    
     
     lazy var moreButton: UIButton = {
         let button = UIButton()
         button.setTitle(">", for: .normal)
-        buttonSettings()
-        return button
-    }()
-    
-    lazy var equalButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("=", for: .normal)
-        buttonSettings()
-        return button
-    }()
-    
-    lazy var lessButton: UIButton = {
-        let button = UIButton()
-        buttonSettings()
-        return button
-    }()
-    
-    lazy var tryLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Try № \(tryCount)"
-        labelSettings()
-        return label
-    }()
-    
-    lazy var compGuessingLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Computer is guessing"
-        labelSettings()
-        return label
-    }()
-    
-    lazy var yourNumberLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Your number is - 50? "
-        labelSettings()
-        return label
-    }()
-    
-    lazy var myNumberLabel: UILabel = {
-        let label = UILabel()
-        label.text = "My number is..."
-        labelSettings()
-        return label
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupConstraints()
-        
-        moreButton.addTarget(self, action: #selector(moreTapped), for: .touchUpInside)
-        equalButton.addTarget(self, action: #selector(equalTapped), for: .touchUpInside)
-        lessButton.addTarget(self, action: #selector(lessTapped), for: .touchUpInside)
-        
-    }
-    
-    @objc private func moreTapped() {
-        gameModel.more()
-        print(hiddenNumber)
-        yourNumberLabel.text = gameModel.lastNumber
-        
-    }
-    
-    @objc private func lessTapped() {
-        gameModel.less()
-        print(hiddenNumber)
-        yourNumberLabel.text = gameModel.lastNumber
-    }
-    
-    @objc private func equalTapped() {
-        gameModel.middleNumber()
-        print(hiddenNumber)
-        yourNumberLabel.text = gameModel.lastNumber
-    }
-    
-    private func labelSettings() {
-        let label = UILabel()
-        label.font = UIFont(name: "Helvetica", size: 23.0)
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-   private func buttonSettings() {
-        let button = UIButton()
         button.backgroundColor = .white
         button.layer.borderWidth = 0.7
         button.layer.cornerRadius = 15
         button.titleLabel?.font = UIFont(name: "Helvetica", size: 23.0)
         button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(moreTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var equalButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("=", for: .normal)
+        button.backgroundColor = .white
+        button.layer.borderWidth = 0.7
+        button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 23.0)
+        button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(equalTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var lessButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("<", for: .normal)
+        button.backgroundColor = .white
+        button.layer.borderWidth = 0.7
+        button.layer.cornerRadius = 15
+        button.titleLabel?.font = UIFont(name: "Helvetica", size: 23.0)
+        button.setTitleColor(.black, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(lessTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var  tryLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Try № \(compGuessing)"
+        label.font = UIFont(name: "Helvetica", size: 23.0)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let compGuessingLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Computer is guessing"
+        label.font = UIFont(name: "Helvetica", size: 23.0)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var yourNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Your number is - 50? "
+        label.font = UIFont(name: "Helvetica", size: 23.0)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let myNumberLabel: UILabel = {
+        let label = UILabel()
+        label.text = "My number is..."
+        label.font = UIFont(name: "Helvetica", size: 23.0)
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupConstraints()
+    }
+    
+    func compGuessingPlus() {
+        yourNumberLabel.text = gameModel.lastNumber
+        tryLabel.text = String("Try № \(gameModel.guesses)")
+    }
+    
+    @objc private func moreTapped() {
+        gameModel.more()
+        compGuessingPlus()
+    }
+    
+    @objc private func lessTapped() {
+        gameModel.less()
+        compGuessingPlus()
+    }
+    
+    @objc private func equalTapped() {
+        performSegue(withIdentifier: "humanGuessing", sender: AnyObject.self)
+}
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "humanGuessing",
+           let dvc = segue.destination as? HumanAttemptViewController {
+        }
     }
     
     private func setupConstraints() {
@@ -129,23 +146,28 @@ class ComputerAttemptViewController: UIViewController {
         tryLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70).isActive = true
         tryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         tryLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        tryLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        tryLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         compGuessingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 115).isActive = true
         compGuessingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         compGuessingLabel.widthAnchor.constraint(equalToConstant: 225).isActive = true
-        compGuessingLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        compGuessingLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         yourNumberLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 170).isActive = true
         yourNumberLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         yourNumberLabel.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        yourNumberLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        yourNumberLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         myNumberLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -180).isActive = true
         myNumberLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         myNumberLabel.widthAnchor.constraint(equalToConstant: 260).isActive = true
-        myNumberLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        myNumberLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
     }
     
 }
+
+//extension ComputerAttemptViewController: TriesDelegate {
+//    func updateLabel(label text: String) {
+//        String(gameModel.guesses) = text
+//    }

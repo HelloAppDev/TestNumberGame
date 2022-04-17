@@ -12,6 +12,13 @@
 		1523F7662806D9520085089C /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F7652806D9520085089C /* GameModel.swift */; };
 		1523F76D280982640085089C /* HumanAttemptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F76C280982640085089C /* HumanAttemptViewController.swift */; };
 		1523F76F280982850085089C /* TryCountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F76E280982850085089C /* TryCountsViewController.swift */; };
+		1523F771280CAED10085089C /* NumberExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F770280CAED10085089C /* NumberExtension.swift */; };
+		1523F773280CAFC90085089C /* NumberConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F772280CAFC90085089C /* NumberConstraints.swift */; };
+		1523F775280CB42B0085089C /* StartConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F774280CB42B0085089C /* StartConstraints.swift */; };
+		1523F777280CB6090085089C /* ComputerConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F776280CB6080085089C /* ComputerConstraints.swift */; };
+		1523F779280CB89D0085089C /* HumanConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F778280CB89D0085089C /* HumanConstraints.swift */; };
+		1523F77B280CB9080085089C /* HumanExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F77A280CB9080085089C /* HumanExtension.swift */; };
+		1523F77D280CB9960085089C /* TryCountsConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1523F77C280CB9960085089C /* TryCountsConstraints.swift */; };
 		15BB4E152805D64C002DE718 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB4E142805D64C002DE718 /* AppDelegate.swift */; };
 		15BB4E172805D64C002DE718 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB4E162805D64C002DE718 /* SceneDelegate.swift */; };
 		15BB4E192805D64C002DE718 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB4E182805D64C002DE718 /* StartViewController.swift */; };
@@ -26,6 +33,13 @@
 		1523F7652806D9520085089C /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		1523F76C280982640085089C /* HumanAttemptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanAttemptViewController.swift; sourceTree = "<group>"; };
 		1523F76E280982850085089C /* TryCountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryCountsViewController.swift; sourceTree = "<group>"; };
+		1523F770280CAED10085089C /* NumberExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberExtension.swift; sourceTree = "<group>"; };
+		1523F772280CAFC90085089C /* NumberConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberConstraints.swift; sourceTree = "<group>"; };
+		1523F774280CB42B0085089C /* StartConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartConstraints.swift; sourceTree = "<group>"; };
+		1523F776280CB6080085089C /* ComputerConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerConstraints.swift; sourceTree = "<group>"; };
+		1523F778280CB89D0085089C /* HumanConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanConstraints.swift; sourceTree = "<group>"; };
+		1523F77A280CB9080085089C /* HumanExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanExtension.swift; sourceTree = "<group>"; };
+		1523F77C280CB9960085089C /* TryCountsConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryCountsConstraints.swift; sourceTree = "<group>"; };
 		15BB4E112805D64C002DE718 /* TestEcoComputers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestEcoComputers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15BB4E142805D64C002DE718 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15BB4E162805D64C002DE718 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,10 +84,24 @@
 		1523F76B2809822C0085089C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1523F770280CAED10085089C /* NumberExtension.swift */,
+				1523F77A280CB9080085089C /* HumanExtension.swift */,
 				15BB4E142805D64C002DE718 /* AppDelegate.swift */,
 				15BB4E162805D64C002DE718 /* SceneDelegate.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1523F77E280CB9F90085089C /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				1523F774280CB42B0085089C /* StartConstraints.swift */,
+				1523F772280CAFC90085089C /* NumberConstraints.swift */,
+				1523F776280CB6080085089C /* ComputerConstraints.swift */,
+				1523F778280CB89D0085089C /* HumanConstraints.swift */,
+				1523F77C280CB9960085089C /* TryCountsConstraints.swift */,
+			);
+			path = Constraints;
 			sourceTree = "<group>";
 		};
 		15BB4E082805D64C002DE718 = {
@@ -97,6 +125,7 @@
 			children = (
 				1523F76A280981C80085089C /* ViewControllers */,
 				1523F769280981B50085089C /* Model */,
+				1523F77E280CB9F90085089C /* Constraints */,
 				1523F76B2809822C0085089C /* Extensions */,
 				15BB4E1A2805D64C002DE718 /* Main.storyboard */,
 				15BB4E1D2805D64E002DE718 /* Assets.xcassets */,
@@ -182,9 +211,16 @@
 				1523F76F280982850085089C /* TryCountsViewController.swift in Sources */,
 				1523F762280697D60085089C /* NumberSelectViewController.swift in Sources */,
 				15BB4E172805D64C002DE718 /* SceneDelegate.swift in Sources */,
+				1523F773280CAFC90085089C /* NumberConstraints.swift in Sources */,
+				1523F779280CB89D0085089C /* HumanConstraints.swift in Sources */,
 				1523F76D280982640085089C /* HumanAttemptViewController.swift in Sources */,
+				1523F777280CB6090085089C /* ComputerConstraints.swift in Sources */,
+				1523F775280CB42B0085089C /* StartConstraints.swift in Sources */,
 				1523F7642806A7750085089C /* ComputerAttemptViewController.swift in Sources */,
+				1523F77B280CB9080085089C /* HumanExtension.swift in Sources */,
+				1523F77D280CB9960085089C /* TryCountsConstraints.swift in Sources */,
 				1523F7662806D9520085089C /* GameModel.swift in Sources */,
+				1523F771280CAED10085089C /* NumberExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

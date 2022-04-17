@@ -87,7 +87,7 @@
         <!--Try Counts View Controller-->
         <scene sceneID="vQQ-cK-pNm">
             <objects>
-                <viewController id="BVQ-Z0-fh1" customClass="TryCountsViewController" customModule="TestEcoComputers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="triesCount" id="BVQ-Z0-fh1" customClass="TryCountsViewController" customModule="TestEcoComputers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wVb-JG-9tU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

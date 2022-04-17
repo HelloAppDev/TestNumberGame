@@ -4,7 +4,6 @@ class HumanAttemptViewController: UIViewController {
     
     lazy var gameModel = GameModel(secretNumber: compNumber, guesses: humanGuesses)
     
-    var computerAttempts = Int()
     var humanGuesses = 1
     lazy var compNumber = Int()
     
@@ -65,33 +64,7 @@ class HumanAttemptViewController: UIViewController {
         randomCompNumber()
     }
     
-    func randomCompNumber() {
-        while compNumber < 1 {
-            let randomNumber = Int.random(in: 1..<100)
-            compNumber = randomNumber
-        }
-    }
-    
-    func compGuessingPlus() {
-        tryLabel.text = String("Try № \(humanGuesses)")
-    }
-    
-    @objc func guessTapped() {
-        compGuessingPlus()
-        if guessingTextField.text == String(compNumber) {
-            equalNumbers()
-        } else if compNumber < Int(guessingTextField.text ?? "101") ?? 101 {
-            humanGuesses += 1
-            infoLabel.isHidden = false
-            infoLabel.text = "No, my number is less than yours"
-        } else {
-            humanGuesses += 1
-            infoLabel.isHidden = false
-            infoLabel.text = "No, my number is more than yours"
-        }
-    }
-    
-    @objc private func equalNumbers() {
+    @objc func equalNumbers() {
         performSegue(withIdentifier: "triesSegue", sender: AnyObject.self)
     }
     
@@ -102,39 +75,8 @@ class HumanAttemptViewController: UIViewController {
         }
     }
     
-    private func setupConstraints() {
-        view.addSubview(guessButton)
-        view.addSubview(tryLabel)
-        view.addSubview(guessingLabel)
-        view.addSubview(guessingTextField)
-        view.addSubview(infoLabel)
-        
-        guessButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        guessButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        guessButton.widthAnchor.constraint(equalToConstant: 350).isActive = true
-        guessButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        tryLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
-        tryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        tryLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        tryLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        
-        guessingLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90).isActive = true
-        guessingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        guessingLabel.widthAnchor.constraint(equalToConstant: 180).isActive = true
-        guessingLabel.heightAnchor.constraint(equalToConstant: 28).isActive = true
-        
-        guessingTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
-        guessingTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        guessingTextField.widthAnchor.constraint(equalToConstant: 280).isActive = true
-        guessingTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
-        infoLabel.topAnchor.constraint(equalTo: guessButton.topAnchor, constant: 80).isActive = true
-        infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        infoLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        infoLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
-    
 }
 

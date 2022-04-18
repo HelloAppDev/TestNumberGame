@@ -59,6 +59,7 @@ class HumanAttemptViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guessingTextField.delegate = self
         infoLabel.isHidden = true
         setupConstraints()
         randomCompNumber()
@@ -73,10 +74,6 @@ class HumanAttemptViewController: UIViewController {
            let dvc = segue.destination as? TryCountsViewController {
             dvc.humanTries = humanGuesses
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
 }
 
